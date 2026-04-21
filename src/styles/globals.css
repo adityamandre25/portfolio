@@ -1,0 +1,311 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+
+  background:
+    radial-gradient(circle at 30% 20%,
+      rgba(255, 255, 255, 0.04),
+      transparent 40%),
+    radial-gradient(circle at 80% 70%,
+      rgba(255, 255, 255, 0.03),
+      transparent 50%),
+    linear-gradient(180deg,
+      #0f0f0f,
+      #0d0d0d);
+
+  color: #f0f0f0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Playfair Display', serif;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+p {
+  line-height: 1.7;
+  color: #fff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+#hero {
+  position: relative;
+}
+
+.hero-sticky {
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  z-index: 0;
+  background: #000;
+}
+
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero-loader {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #0a0a0a;
+}
+
+.hero-loader p {
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #666;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.hero-loader::after {
+  content: '';
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #008cff, transparent);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+
+.hero-text {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  text-align: center;
+}
+
+.hero-text p {
+  position: absolute;
+  left: 0;
+  width: 100%;
+
+  color: white;
+  font-family: "Syne", sans-serif;
+  font-weight: 650;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  padding: 0 clamp(16px, 5vw, 80px);
+
+  opacity: 0;
+  transition: opacity 0.1s linear, transform 0.1s linear;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+}
+
+.hero-main {
+  font-size: clamp(44px, 6vw, 90px);
+  font-weight: 700;
+  bottom: 6dvh;
+}
+
+.hero-long {
+  position: absolute;
+  bottom: 12dvh;
+
+  font-size: clamp(24px, 3.4vw, 48px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.015em;
+}
+
+.scroll-hint {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 6dvh;
+  text-align: center;
+
+  color: white;
+  font-size: clamp(11px, 1.5vw, 16px);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+
+  opacity: 0.7;
+  animation: float 2s ease-in-out infinite;
+  z-index: 10;
+}
+
+.name-break {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .hero-main {
+    font-size: clamp(42px, 10vw, 64px);
+    bottom: 5dvh;
+  }
+
+  .hero-long {
+    font-size: clamp(20px, 5.5vw, 34px);
+    bottom: 11dvh;
+    line-height: 1.25;
+  }
+  .name-break {
+    display: block;
+  }
+  .scroll-hint {
+    font-size: clamp(10px, 3.5vw, 14px);
+    letter-spacing: 0.1em;
+    bottom: 8dvh;
+  }
+}
+
+
+section {
+  width: 100%;
+  padding: 6rem 0;
+}
+
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+}
+
+::selection {
+  background: rgba(168, 85, 247, 0.3);
+  color: #fff;
+}
+
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+
+.fade-up {
+  animation: fadeUp 0.7s ease forwards;
+}
+
+.text-purple {
+  color: #008cff;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #008cff, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 4rem 1.25rem;
+  }
+}

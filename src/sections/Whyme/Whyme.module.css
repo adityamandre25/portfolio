@@ -1,0 +1,473 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
+
+
+.section {
+  position: relative;
+  background: #000000;
+  padding: 80px 24px;
+  overflow: hidden;
+  isolation: isolate;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.blobTop {
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 420px;
+  height: 420px;
+
+  background: radial-gradient(
+    circle,
+    rgba(0, 119, 182, 0.95) 0%,   
+    rgba(0, 119, 182, 0.4) 30%,
+    rgba(0, 119, 182, 0.15) 60%,
+    transparent 85%
+  );
+
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blobBottom {
+  position: absolute;
+  bottom: -200px;
+  left: -200px;
+  width: 420px;
+  height: 420px;
+
+  background: radial-gradient(
+    circle,
+    rgba(0, 119, 182, 0.95) 0%,   
+    rgba(0, 119, 182, 0.4) 30%,
+    rgba(0, 119, 182, 0.15) 60%,
+    transparent 85%
+  );
+
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  margin-bottom: 72px;
+  animation: fadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.accentLine {
+  width: 36px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #0077b6, #00b4d8);
+  opacity: 0.7;
+}
+
+.sectionLabel {
+  font-size: 0.72rem;      
+  font-weight: 600;          
+  letter-spacing: 0.2em;   
+  text-transform: uppercase;
+  color: #00b4d8;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin: 0;
+  color: #ffffff;
+}
+
+.gradientText {
+  background: linear-gradient(90deg, #00b4d8 0%, #48cae4 50%, #90e0ef 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 15px;
+  font-weight: 300;
+  color: #f5f5f5;
+  line-height: 1.65;
+  max-width: 400px;
+  margin: 0;
+}
+
+
+.mainRow {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 28px;
+}
+
+
+.mainCardWrapper {
+  flex: 1 1 300px;
+  max-width: 400px;
+  min-width: 0;
+}
+
+
+.mainCard {
+  background:
+    linear-gradient(90deg,
+      rgba(0, 180, 216, 0.85) 0%,
+      rgba(0, 119, 182, 0.55) 25%,
+      rgba(15, 17, 17, 0.95) 55%,
+      rgb(0, 0, 0) 100%);
+
+  border: 1px solid rgba(0, 180, 216, 0.28);
+  border-radius: 20px;
+  padding: 30px 28px 26px;
+  cursor: pointer;
+
+  will-change: transform, box-shadow;
+
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  position: relative;
+  overflow: hidden;
+}
+
+
+.mainCard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+
+  background:
+    linear-gradient(120deg,
+      rgba(0, 180, 216, 0.18),
+      transparent 60%);
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+
+.mainCard:hover {
+  transform: translateY(-4px) scale(1.02);
+
+  border-color: rgba(0, 180, 216, 0.35);
+
+  background:
+    linear-gradient(90deg,
+      rgba(0, 180, 216, 0.85) 0%,
+      rgba(0, 119, 182, 0.55) 25%,
+      rgba(15, 17, 17, 0.95) 55%,
+      rgb(0, 0, 0) 100%);
+
+  box-shadow:
+    0 10px 28px rgba(0, 119, 182, 0.16),
+    0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.mainCard:hover::after {
+  opacity: 1;
+}
+
+.mainCard.active {
+  transform: translateY(-6px) scale(1.03);
+
+  border-color: rgba(0, 180, 216, 0.35);
+
+  background:
+    linear-gradient(90deg,
+      rgba(0, 180, 216, 0.9) 0%,
+      rgba(0, 119, 182, 0.6) 30%,
+      rgba(10, 15, 25, 0.96) 65%,
+      rgba(5, 10, 18, 1) 100%);
+
+  box-shadow:
+    0 10px 28px rgba(0, 119, 182, 0.16),
+    0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.mainCard.active::after {
+  opacity: 1;
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+
+.iconBox {
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+  background: rgba(0, 180, 216, 0.08);
+  border: 1px solid rgba(0, 180, 216, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.mainCard.active .iconBox,
+.mainCard:hover .iconBox {
+  background: rgba(0, 180, 216, 0.16);
+  border-color: rgba(0, 180, 216, 0.4);
+}
+
+.iconBox svg {
+  width: 22px;
+  height: 22px;
+  stroke: #00b4d8;
+  fill: none;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+.badge {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: rgba(0, 180, 216, 0.65);
+  background: rgba(0, 180, 216, 0.08);
+  border: 1px solid rgba(0, 180, 216, 0.16);
+  border-radius: 100px;
+  padding: 4px 12px;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.mainCard.active .badge {
+  background: rgba(0, 180, 216, 0.14);
+  color: #00b4d8;
+  border-color: rgba(0, 180, 216, 0.3);
+}
+
+
+.cardTitle {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.015em;
+  margin: 0 0 10px;
+  line-height: 1.2;
+}
+
+.cardHint {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.65;
+  margin: 0 0 24px;
+}
+
+
+.cardDivider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin-bottom: 18px;
+}
+
+
+.cardBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardCta {
+  font-size: 13px;
+  font-weight: 500;
+  color: #000000;
+  letter-spacing: 0.03em;
+  transition: color 0.25s ease;
+}
+
+.mainCard.active .cardCta {
+  color: #000000;
+}
+
+.arrowBox {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: rgba(0, 180, 216, 0.08);
+  border: 1px solid rgba(0, 180, 216, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.3s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mainCard.active .arrowBox {
+  background: rgba(0, 180, 216, 0.15);
+  transform: rotate(90deg);
+}
+
+.arrowBox svg {
+  width: 14px;
+  height: 14px;
+  stroke: #00b4d8;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+.revealWrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.48s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.revealWrapper.open {
+  max-height: 560px;
+}
+
+.revealInner {
+  padding-top: 14px;
+}
+
+.contentRow {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contentCard {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(0, 180, 216, 0.12);
+  border-radius: 14px;
+  padding: 18px 20px;
+  opacity: 0;
+  transform: translateY(16px);
+  will-change: transform, opacity;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.contentCard:hover {
+  border-color: rgba(0, 180, 216, 0.25);
+  background: rgba(0, 180, 216, 0.04);
+}
+
+.contentCard.visible {
+  animation: cardReveal 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.contentCard.visible:nth-child(2) {
+  animation-delay: 0.09s;
+}
+
+@keyframes cardReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contentCardTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.contentDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00b4d8, #0077b6);
+  flex-shrink: 0;
+}
+
+.contentTitle {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.contentText {
+  font-size: 13.5px;
+  font-weight: 300;
+  color: #7a8a94;
+  line-height: 1.72;
+  margin: 0;
+  padding-left: 17px;
+}
+
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@media (max-width: 680px) {
+  .section {
+    padding: 64px 16px;
+  }
+
+  .header {
+    margin-bottom: 44px;
+  }
+
+  .mainRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mainCardWrapper {
+    max-width: 100%;
+    flex: none;
+  }
+
+  .contentRow {
+    flex-direction: column;
+  }
+}
