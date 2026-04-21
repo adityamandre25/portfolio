@@ -29,7 +29,7 @@ const CAMPAIGNS: Campaign[] = [
     name: "Rakshith x Masai School",
     metric: "3.7M+",
     description:
-      "The goal was to promote Masai School’s Sunday Test, where JD and Rakshith created content highlighting it as a regular evaluation that helps students test their skills, track progress, and stay consistent in their learning journey, making it valuable for those preparing for tech careers.",
+      "The goal was to promote Masai School's Sunday Test, where Rakshith created content highlighting it as a regular evaluation that helps students test their skills, track progress, and stay consistent in their learning journey , making it valuable for those preparing for tech careers.",
     pills: ["73K+ Likes", "Students"],
     link: "https://www.instagram.com/reel/DUnbOnigSwd/?igsh=aW96ZnMwaGR6eTZr",
   },
@@ -38,7 +38,7 @@ const CAMPAIGNS: Campaign[] = [
     name: "JD x Niconi ",
     metric: "2M+",
     description:
-      "Our Goal Was To Create Engaging Content For ACwO’s Earbuds And Smartwatches. The Client Collaborated With MrLazyTech For A Reel Where He Showcased The Features Both Verbally And Visually, Delivering Value Packed Content In An Engaging Way.",
+      "Our goal was to create engaging and informative content for Niconi's Tan Removal product, where JD Tech showcased the product benefits through real-life usage , both verbally and visually , delivering value-packed content in an easy-to-understand and engaging way.",
     pills: ["20K+ Likes", "Cosmetics"],
     link: "https://www.instagram.com/reel/DOuaShkEvq5/?igsh=cGFqZGpxamlhbmhi",
   },

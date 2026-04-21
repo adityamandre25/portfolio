@@ -10,20 +10,6 @@ export interface Talent {
 
 export const talents: Talent[] = [
   {
-    id: "jd_techh",
-    name: "JD Tech",
-    handle: "@jd_techh",
-    niche: "Tech & Gadgets",
-    description: "Gadget reviewer and tech enthusiast breaking down the latest in consumer technology.",
-    longDescription:
-      "JD Is One Of Karnataka’s Top Tech Content Creator, Known For Making Informative And Entertaining Videos In Kannada. He Covers The Latest Gadgets, Apps, Ai Tools, And Smart Tech Tips, Making It Easy For His Audience To Stay Updated And make Smarter Digital Choices.",
-    stats: [
-      { label: "Niche", value: "Tech & Gadgets" },
-      { label: "Platform", value: "Instagram / Facebook" },
-      { label: "Stage", value: "Karnataka's Top 2nd" },
-    ],
-  },
-  {
     id: "one_type_rakshi",
     name: "Rakshith",
     handle: "@one_type_rakshi",
@@ -35,6 +21,20 @@ export const talents: Talent[] = [
       { label: "Niche", value: "Tech & Gadgets" },
       { label: "Platform", value: "Instagram / Facebook" },
       { label: "Stage", value: "Karnataka's Top 1" },
+    ],
+  },
+  {
+    id: "jd_techh",
+    name: "JD Tech",
+    handle: "@jd_techh",
+    niche: "Tech & Gadgets",
+    description: "Gadget reviewer and tech enthusiast breaking down the latest in consumer technology.",
+    longDescription:
+      "JD Is One Of Karnataka’s Top Tech Content Creator, Known For Making Informative And Entertaining Videos In Kannada. He Covers The Latest Gadgets, Apps, Ai Tools, And Smart Tech Tips, Making It Easy For His Audience To Stay Updated And make Smarter Digital Choices.",
+    stats: [
+      { label: "Niche", value: "Tech & Gadgets" },
+      { label: "Platform", value: "Instagram / Facebook" },
+      { label: "Stage", value: "Karnataka's Top 2nd" },
     ],
   },
   {

@@ -139,7 +139,7 @@
 .statCard {
   position: absolute;
   width: clamp(90px, 22vw, 180px);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(0, 15, 30, 0.75);
   border: 1px solid rgba(0, 180, 216, 0.2);
   border-radius: 16px;
   padding: 35px 30px;
@@ -151,8 +151,6 @@
     border-color 0.35s ease,
     background 0.35s ease,
     z-index 0s;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
 }
 
 
@@ -187,9 +185,15 @@
     0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
+.fanStack:has(.statCard:hover) .statCard:not(:hover) {
+  filter: blur(2px);
+  opacity: 0.5;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
 .statNum {
   font-family: 'Syne', sans-serif;
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1;
