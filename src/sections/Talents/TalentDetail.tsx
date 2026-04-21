@@ -2,10 +2,15 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { talents } from "./talentsData";
 import styles from "./TalentDetail.module.css";
+import { useEffect } from "react";
 
 const TalentDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" })
+  }, [])
 
   const talent = talents.find((t) => t.id === id);
 

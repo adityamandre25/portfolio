@@ -89,7 +89,7 @@ export default function Hero() {
           : <VideoHero containerRef={containerRef} />
         }
 
-        
+
         <div className="hero-text">
 
           <p
@@ -100,12 +100,12 @@ export default function Hero() {
           </p>
 
           <p className="hero-main" style={getTextStyle(progress, 0.1, 0.35)}>
-  SIDDHARTH<span className="name-break"> M IYER</span>
-</p>
+            SIDDHARTH<span className="name-break"> M IYER</span>
+          </p>
 
           <p className="hero-long" style={getTextStyle(progress, 0.35, 0.65)}>
-  INFLUENCER MARKETER<span className="long-break"> & TALENT MANAGER</span>
-</p>
+            INFLUENCER MARKETER<span className="long-break"> & TALENT MANAGER</span>
+          </p>
 
           <p className="hero-long" style={getTextStyle(progress, 0.65, 1)}>
             4+ YEARS OF EXPERIENCE
@@ -129,33 +129,39 @@ function VideoHero({
   const [ready, setReady] = useState(false)
 
   useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
+  const video = videoRef.current
+  if (!video) return
 
-    const onLoaded = () => setReady(true)
+  let onLoaded: (() => void) | null = null
+
+  if (video.readyState >= 1) {
+    setReady(true)
+  } else {
+    onLoaded = () => setReady(true)
     video.addEventListener('loadedmetadata', onLoaded)
+  }
 
-    const onScroll = () => {
-      const container = containerRef.current
-      if (!container || !video.duration) return
+  const onScroll = () => {
+    const container = containerRef.current
+    if (!container || !video.duration) return
 
-      const scrolled = window.scrollY - container.offsetTop
-      const scrollable = container.offsetHeight - window.innerHeight
-      const progress = Math.max(0, Math.min(1, scrolled / scrollable))
+    const scrolled = window.scrollY - container.offsetTop
+    const scrollable = container.offsetHeight - window.innerHeight
+    const progress = Math.max(0, Math.min(1, scrolled / scrollable))
 
-      if (rafRef.current) cancelAnimationFrame(rafRef.current) /*optimization to prevent too many frame updates*/
-      rafRef.current = requestAnimationFrame(() => {
-        video.currentTime = progress * video.duration
-      })
-    }
+    if (rafRef.current) cancelAnimationFrame(rafRef.current)
+    rafRef.current = requestAnimationFrame(() => {
+      video.currentTime = progress * video.duration
+    })
+  }
 
-    window.addEventListener('scroll', onScroll, { passive: true })
+  window.addEventListener('scroll', onScroll, { passive: true })
 
-    return () => {
-      video.removeEventListener('loadedmetadata', onLoaded)
-      window.removeEventListener('scroll', onScroll)
-    }
-  }, [containerRef])
+  return () => {
+    if (onLoaded) video.removeEventListener('loadedmetadata', onLoaded)
+    window.removeEventListener('scroll', onScroll)
+  }
+}, [containerRef])
 
   return (
     <>
@@ -251,16 +257,21 @@ function CanvasHero({
     let loadedCount = 0
 
     images.forEach((img) => {
-      const onLoad = () => {
+      if (img.complete) {
         loadedCount++
         if (loadedCount === TOTAL_FRAMES) {
           resizeCanvas()
           setLoaded(true)
         }
+      } else {
+        img.onload = () => {
+          loadedCount++
+          if (loadedCount === TOTAL_FRAMES) {
+            resizeCanvas()
+            setLoaded(true)
+          }
+        }
       }
-
-      if (img.complete) onLoad()
-      else img.onload = onLoad
     })
   }, [])
 
